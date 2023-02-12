@@ -1,4 +1,5 @@
-import Header from './Header';
+import { useWindowDimensions } from './useWindowDimensions';
+import { DesktopHeader, MobileHeader } from './Header';
 import desktopImage from './assets/image-hero-desktop.png';
 import mobileImage from './assets/image-hero-mobile.png';
 import clientAudiophile from './assets/client-audiophile.svg';
@@ -7,9 +8,11 @@ import clientMaker from './assets/client-maker.svg';
 import clientMeet from './assets/client-meet.svg';
 
 function App() {
+  const { height, width } = useWindowDimensions();
+
   return (
     <div className="relative grid min-h-screen place-content-center">
-      <Header className="absolute top-0 w-full" />
+      <DesktopHeader className="absolute top-0 w-full" />
 
       <main className="flex max-w-5xl">
         <div className="flex basis-3/5 flex-col justify-end">
@@ -50,7 +53,8 @@ function App() {
           </ul>
         </div>
 
-        <div className="basis-2/5">
+        {/* hero image */}
+        <div className="hidden basis-2/5 desktop:block">
           <img
             src={desktopImage}
             alt="man communicating with teammates on a laptop"

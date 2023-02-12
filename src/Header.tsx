@@ -7,7 +7,7 @@ type Props = {
   className?: string;
 };
 
-function Header({ className }: Props) {
+export const DesktopHeader = ({ className }: Props) => {
   return (
     <header className={clsx('flex items-center gap-12 px-8 py-6', className)}>
       <h1 className="text-3xl font-bold text-_almost-black">snap</h1>
@@ -29,6 +29,12 @@ function Header({ className }: Props) {
       </div>
     </header>
   );
-}
+};
 
-export default Header;
+export const MobileHeader = () => {
+  return (
+    <header>
+      <h1 className="text-3xl font-bold text-_almost-black">snap</h1>
+    </header>
+  );
+};
