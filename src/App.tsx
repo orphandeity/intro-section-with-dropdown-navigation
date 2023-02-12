@@ -28,7 +28,7 @@ function App() {
               watch productivity soar.
             </p>
 
-            <button className="rounded-xl bg-_almost-black px-6 py-3 text-_almost-white">
+            <button className="rounded-xl border border-transparent bg-_almost-black px-6 py-3 text-_almost-white transition-colors hover:border hover:border-_almost-black hover:bg-_almost-white hover:text-_almost-black">
               Learn more
             </button>
           </div>
