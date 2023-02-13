@@ -52,7 +52,7 @@ function App() {
           </div>
 
           {/* client list */}
-          <ul className="flex items-center justify-center gap-8 desktop:items-end desktop:justify-start">
+          <ul className="flex items-center justify-center gap-8 desktop:justify-start">
             <li>
               <img src={clientDatabiz} alt="Databiz - a Snap client" />
             </li>
