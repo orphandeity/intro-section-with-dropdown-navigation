@@ -17,7 +17,7 @@ export default function MobileNav() {
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)}>
+      <button onClick={() => setIsOpen(true)} aria-label="menu">
         <MenuIcon />
       </button>
       <AnimatePresence>
@@ -45,7 +45,11 @@ export default function MobileNav() {
                 exit={{ translateX: '100%' }}
                 transition={{ duration: 0.5 }}
               >
-                <button onClick={() => setIsOpen(false)} className="self-end">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="self-end"
+                  aria-label="close"
+                >
                   <CloseMenuIcon />
                 </button>
                 <nav className="mt-8 flex flex-col gap-4 pl-2 text-sm text-_medium-gray">
