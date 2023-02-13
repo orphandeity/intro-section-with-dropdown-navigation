@@ -12,13 +12,13 @@ function App() {
   const breakpoint = 1440;
 
   return (
-    <div className="min-h-screen">
+    <div className="relative min-h-screen">
       <Header />
       {/* hero section */}
-      <main className="mx-auto flex flex-col-reverse desktop:max-w-5xl desktop:flex-row">
+      <main className="mx-auto flex flex-col-reverse desktop:mt-4 desktop:max-w-5xl desktop:flex-row">
         {/* hero copy */}
-        <div className="flex flex-col px-4 desktop:basis-3/5">
-          <div className="flex flex-col items-center gap-4 py-12 desktop:items-start desktop:gap-8  desktop:py-20">
+        <div className="flex flex-col px-4 desktop:basis-3/5 desktop:justify-between">
+          <div className="flex flex-col items-center gap-4 py-8 desktop:items-start desktop:gap-8  desktop:py-20">
             {width >= breakpoint ? (
               <h1 className="text-7xl font-bold text-_almost-black">
                 Make
@@ -26,7 +26,7 @@ function App() {
                 remote work
               </h1>
             ) : (
-              <h1 className="text-3xl font-bold text-_almost-black">
+              <h1 className="text-3xl font-bold leading-6 text-_almost-black">
                 Make remote work
               </h1>
             )}
@@ -52,7 +52,7 @@ function App() {
           </div>
 
           {/* client list */}
-          <ul className="flex flex-1 items-end gap-8">
+          <ul className="flex items-center justify-center gap-8 desktop:items-end desktop:justify-start">
             <li>
               <img src={clientDatabiz} alt="Databiz - a Snap client" />
             </li>
@@ -77,26 +77,34 @@ function App() {
         </div>
 
         {/* hero image - mobile */}
-        <div className="basis-2/5 desktop:hidden">
+        <div className="mx-auto basis-1/4 desktop:hidden">
           <img
             src={mobileImage}
             alt="man communicating with teammates on a laptop"
           />
         </div>
       </main>
+      <Attribution />
     </div>
   );
 }
 
 const Attribution = () => {
   return (
-    <footer>
+    <footer className="absolute bottom-4 right-4 mt-4 text-[11px] text-_medium-gray/70">
       Challenge by{' '}
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+      <a
+        href="https://www.frontendmentor.io?ref=challenge"
+        target="_blank"
+        className="text-blue-500/70"
+      >
         Frontend Mentor
       </a>
       . Coded by{' '}
-      <a href="https://www.frontendmentor.io/profile/orphandeity">
+      <a
+        href="https://www.frontendmentor.io/profile/orphandeity"
+        className="text-blue-500/70"
+      >
         Jeff R Williams
       </a>
       .

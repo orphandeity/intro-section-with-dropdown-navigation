@@ -1,9 +1,9 @@
-import React from 'react';
 import clsx from 'clsx';
 import { LogoIcon, MenuIcon, CloseMenuIcon } from './Icons';
 import Features from './Features';
 import Company from './Company';
 import useWindowDimensions from './useWindowDimensions';
+import MobileNav from './MobileNav';
 
 type Props = {
   className?: string;
@@ -42,15 +42,9 @@ const DesktopHeader = ({ className }: Props) => {
 
 const MobileHeader = ({ className }: Props) => {
   return (
-    <header className="relative flex items-start justify-between overflow-hidden px-4 py-6">
+    <header className="flex items-start justify-between overflow-hidden px-4 py-6">
       <LogoIcon />
-      <MenuIcon />
-      <nav className="absolute top-0 right-0 flex translate-x-full flex-col items-start bg-white">
-        <p>Features</p>
-        <p>Company</p>
-        <p>Careers</p>
-        <p>About</p>
-      </nav>
+      <MobileNav />
     </header>
   );
 };
