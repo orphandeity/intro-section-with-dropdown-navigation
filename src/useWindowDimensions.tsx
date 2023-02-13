@@ -1,32 +1,17 @@
 import { useState, useEffect } from 'react';
 
-type TWindowSize = {
-  width: number;
-  height: number;
-};
-
-type THook = TWindowSize;
-
-export const useWindowDimensions = (): THook => {
-  const initSize: TWindowSize = {
-    width: window.innerWidth,
-    height: window.innerHeight,
-  };
-
-  const [windowSize, setWindowSize] = useState<TWindowSize>(initSize);
+export default function useWindowDimensions() {
+  const [width, setWidth] = useState<number>(window.innerWidth);
 
   useEffect(() => {
-    const handleResize = (): void => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
 
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  return windowSize;
-};
+  return width;
+}

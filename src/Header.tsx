@@ -1,40 +1,69 @@
 import React from 'react';
 import clsx from 'clsx';
+import { LogoIcon, MenuIcon, CloseMenuIcon } from './Icons';
 import Features from './Features';
 import Company from './Company';
+import useWindowDimensions from './useWindowDimensions';
 
 type Props = {
   className?: string;
 };
 
-export const DesktopHeader = ({ className }: Props) => {
+export default function Header({ className }: Props) {
+  const width = useWindowDimensions();
+
+  const breakpoint = 1440;
+
+  return breakpoint <= width ? (
+    <DesktopHeader className={className} />
+  ) : (
+    <MobileHeader className={className} />
+  );
+}
+
+const DesktopHeader = ({ className }: Props) => {
   return (
     <header className={clsx('flex items-center gap-12 px-8 py-6', className)}>
-      <h1 className="text-3xl font-bold text-_almost-black">snap</h1>
-      <nav className="flex items-center gap-6 text-xs text-_medium-gray">
-        <Features />
-        <Company />
-        <p>Careers</p>
-        <p className="cursor-pointer transition-colors hover:text-_almost-black">
-          About
-        </p>
+      <LogoIcon />
+      <nav className="flex flex-1 justify-between">
+        <div className="flex items-center gap-6 text-xs text-_medium-gray">
+          <Features />
+          <Company />
+          <p>Careers</p>
+          <p className="cursor-pointer transition-colors hover:text-_almost-black">
+            About
+          </p>
+        </div>
+        <Login />
       </nav>
-      <div className="flex flex-1 items-center justify-end gap-8">
-        <button className="text-xs text-_medium-gray transition-colors hover:text-_almost-black">
-          Login
-        </button>
-        <button className="rounded-xl border-2 border-_medium-gray px-6 py-3 text-xs text-_medium-gray transition-colors hover:border-_almost-black hover:text-_almost-black">
-          Register
-        </button>
-      </div>
     </header>
   );
 };
 
-export const MobileHeader = () => {
+const MobileHeader = ({ className }: Props) => {
   return (
-    <header>
-      <h1 className="text-3xl font-bold text-_almost-black">snap</h1>
+    <header className="relative flex items-start justify-between overflow-hidden px-4 py-6">
+      <LogoIcon />
+      <MenuIcon />
+      <nav className="absolute top-0 right-0 flex translate-x-full flex-col items-start bg-white">
+        <p>Features</p>
+        <p>Company</p>
+        <p>Careers</p>
+        <p>About</p>
+      </nav>
     </header>
+  );
+};
+
+const Login = () => {
+  return (
+    <div className="items-center justify-end gap-8 desktop:flex">
+      <button className="text-xs text-_medium-gray transition-colors hover:text-_almost-black">
+        Login
+      </button>
+      <button className="rounded-xl border-2 border-_medium-gray px-6 py-3 text-xs text-_medium-gray transition-colors hover:border-_almost-black hover:text-_almost-black">
+        Register
+      </button>
+    </div>
   );
 };
